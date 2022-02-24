@@ -1,16 +1,20 @@
 <template>
   <v-container>
-    <h1>HELLO</h1>
-    <f-tip type="info"> this a tip </f-tip>
+    sadfs
   </v-container>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Mixins } from "vue-property-decorator";
+import mixins from "@/mixins";
+
 @Component
-class IndexPage extends Vue {
-  get title() {
-    return "hello";
+class IndexPage extends Mixins(mixins.Page) {
+  get appbar() {
+    return {
+      back: false,
+      style: "home" as const,
+    };
   }
 }
 export default IndexPage;

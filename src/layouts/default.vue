@@ -1,26 +1,31 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-
-      <v-btn text href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <nuxt />
-    </v-main>
+    <f-loading v-if="initing" :loading="initing" color="primary" fullscreen />
+    <mobile-layout v-else />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-@Component
-class DefaultLayout extends Vue {}
+import { Sync } from "vuex-pathify";
+import MobileLayout from "@/components/layouts/mobile/Index.vue";
+
+@Component({
+  components: {
+    MobileLayout,
+  },
+})
+class DefaultLayout extends Vue {
+  @Sync("app/initing") initing!: boolean;
+
+  async mounted() {
+    try {
+      await this.$utils.app.init(this);
+    } catch (error) {
+      this.$utils.helper.errorHandler(this, error);
+    }
+  }
+}
 export default DefaultLayout;
 </script>
 

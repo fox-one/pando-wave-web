@@ -49,7 +49,6 @@ const config: NuxtConfig = {
     "@nuxtjs/vuetify",
   ],
   modules: [
-    "@nuxtjs/axios",
     "@nuxtjs/dotenv",
     [
       "nuxt-i18n",

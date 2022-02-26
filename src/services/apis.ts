@@ -1,4 +1,5 @@
 import Http from "@foxone/utils/http";
+import { MIXIN_HOST } from "@/constants";
 
 export default function(http: Http) {
   return {
@@ -79,6 +80,14 @@ export default function(http: Http) {
 
     bindInvitation(inviterId): Promise<Array<any>> {
       return http.post(`/invitations/bind/${inviterId}`, {});
+    },
+
+    getAssetsFromMixin(): Promise<API.MixinAsset[]> {
+      return http.get("/assets", { baseURL: MIXIN_HOST });
+    },
+
+    getAssetFromMixin(id: string): Promise<API.MixinAsset> {
+      return http.get(`/assets/${id}`, { baseURL: MIXIN_HOST });
     },
   };
 }

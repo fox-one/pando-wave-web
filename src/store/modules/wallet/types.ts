@@ -1,0 +1,15 @@
+export const prefix = "wallet/";
+
+export const GetterTypes = {
+  GET_WALLET_ASSET_BY_ID: "GET_ASSET_BY_ID",
+  GET_BALANCE_BY_ID: "GET_BALANCE_BY_ID",
+  GET_PRICE_BY_ID: "GET_PRICE_BY_ID",
+  WALLET_ASSETS_MAP: "ASSETS_MAP",
+  GET_WALLET_BALANCE: "GET_WALLET_BALANCE",
+};
+
+export const MutationTypes = {
+  SET_WALLET_ASSETS: "SET_ASSETS",
+  SET_WALLET_ASSET: "SET_ASSET",
+  CLEAR_WALLET_ASSETS: "CLEAR_ASSETS",
+};

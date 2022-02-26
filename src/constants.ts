@@ -10,6 +10,8 @@ export const NODE_ENV = process.env.NODE_ENV;
 
 export const APP_TOKEN = process.env.TOKEN;
 
+export const MIXIN_HOST = "https://api.mixin.one";
+
 export const CONFIG = isProduct
   ? {
       API_BASE: "https://dash-api.getlinks.jp/api",

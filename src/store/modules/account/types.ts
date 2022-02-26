@@ -1,4 +1,4 @@
-export const prefix = "market/";
+export const prefix = "account/";
 
 export const GetterTypes = {};
 

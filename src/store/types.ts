@@ -16,6 +16,12 @@ import {
   MutationTypes as MarketMutationTypes,
   ActionTypes as MarketActionTypes,
 } from "./modules/market/types";
+import {
+  prefix as WalletPrefix,
+  GetterTypes as WalletGetterTypes,
+  MutationTypes as WalletMutationTypes,
+} from "./modules/wallet/types";
+import { GetterTypes as GlobalGetterTypes } from "./getters/types";
 
 function getGlobalTypes<T>(types: T, prefix: string) {
   return Object.keys(types).reduce(
@@ -32,6 +38,7 @@ export const GlobalMutations = {
   ...getGlobalTypes(AuthMutationTypes, AuthPrefix),
   ...getGlobalTypes(AccountMutationTypes, AccountPrefix),
   ...getGlobalTypes(MarketMutationTypes, MarketPrefix),
+  ...getGlobalTypes(WalletMutationTypes, WalletPrefix),
 };
 
 export const GlobalActions = {
@@ -44,4 +51,6 @@ export const GlobalGetters = {
   ...getGlobalTypes(AuthGetterTypes, AuthPrefix),
   ...getGlobalTypes(AccountGetterTypes, AccountPrefix),
   ...getGlobalTypes(MarketGetterTypes, MarketPrefix),
+  ...getGlobalTypes(WalletGetterTypes, WalletPrefix),
+  ...getGlobalTypes(GlobalGetterTypes, ""),
 };

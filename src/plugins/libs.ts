@@ -2,6 +2,7 @@ import Vue from "vue";
 import UIKit from "@foxone/uikit";
 
 import "@foxone/uikit/build/index.min.css";
+import "@/components";
 
 const plugin = ({ app }) => {
   Vue.use(UIKit);

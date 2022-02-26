@@ -4,3 +4,7 @@ p,
 a {
   user-select: none;
 }
+
+.f-number {
+  font-feature-settings: "salt" on;
+}

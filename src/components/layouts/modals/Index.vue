@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import { Sync } from "vuex-pathify";
 import AuthModal from "./AuthModal.vue";
 
@@ -23,6 +23,8 @@ import AuthModal from "./AuthModal.vue";
 })
 class Modals extends Vue {
   @Sync("app/paying") paying!: State.PayState;
+
+  @Prop() a;
 
   handlePayingCancel() {
     this.paying = { visible: false, timer: null };

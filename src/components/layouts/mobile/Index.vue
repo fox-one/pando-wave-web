@@ -7,7 +7,7 @@
       <nuxt />
     </v-main>
 
-    <modals />
+    <modals a="1212" />
   </div>
 </template>
 

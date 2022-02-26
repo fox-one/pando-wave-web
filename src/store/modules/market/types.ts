@@ -1,6 +1,9 @@
 export const prefix = "market/";
 
-export const GetterTypes = {};
+export const GetterTypes = {
+  GET_PRODUCT_BY_ID: "GET_PRODUCT_BY_ID",
+  GET_ASSET_BY_ID: "GET_ASSET_BY_ID",
+};
 
 export const MutationTypes = {
   SET_ASSETS: "SET_ASSETS",

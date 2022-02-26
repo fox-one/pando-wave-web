@@ -15,7 +15,7 @@ function generateStructureInterceptor() {
         return Promise.reject(res.data.error);
       }
 
-      return Promise.resolve(res.data);
+      return Promise.resolve(res.data.data);
     },
     (error: any) => {
       console.log(error);

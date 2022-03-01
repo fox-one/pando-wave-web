@@ -21,7 +21,7 @@
         <div class="section-title">Capacity</div>
         <div class="section-value">
           <div>{{ meta.capacityText }}</div>
-          <v-progress-linear :value="meta.capacityRate" color="#6F7BED" rounded class="mt-3" />
+          <v-progress-linear :value="meta.capacityRate" color="secondary" rounded class="mt-3" />
         </div>
       </div>
     </div>

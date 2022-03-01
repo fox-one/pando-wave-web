@@ -4,6 +4,7 @@ import * as account from "./account";
 import * as app from "./app";
 import * as wallet from "./wallet";
 import * as wave from "./wave";
+import * as payment from "./payment";
 import utils, { mixin } from "@foxone/utils";
 
 export default {
@@ -13,5 +14,6 @@ export default {
   app,
   wave,
   wallet,
+  payment,
   number: { ...utils.number, ...number },
 };

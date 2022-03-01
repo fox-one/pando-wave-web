@@ -1,5 +1,5 @@
 <template>
-  <f-auth-method-modal ref="authModal" :fennec="fennec" :title="$t('common.connect-wallet')" @auth="handleLogin" />
+  <f-auth-method-modal ref="authModal" :fennec="fennec" @auth="handleLogin" />
 </template>
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 declare namespace Getter {
   export interface ProductMeta {
     product: API.Product | null;
-    asset: API.Product | null;
+    asset: API.Asset | null;
   }
 
   export type GetProductById = (id: string) => API.Product | undefined;

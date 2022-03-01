@@ -14,7 +14,7 @@
     <pando-account-overview
       :balance="meta.balance"
       :logged="logged"
-      name="Pando Rings"
+      name="Pando Wave"
       :version="VERSION"
       @close="handleClose"
       @connect="handleConnect"

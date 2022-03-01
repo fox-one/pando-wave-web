@@ -10,3 +10,13 @@ export function errorHandler(vm: Vue, error: any) {
 
   vm.$uikit.toast.error({ message: `${code} ${message}` });
 }
+
+export function convertToSelectAsset(asset: API.Asset) {
+  return {
+    symbol: asset.symbol,
+    name: asset.name,
+    logo: asset.icon_url,
+    id: asset.asset_id,
+    price: asset.price_usd,
+  };
+}

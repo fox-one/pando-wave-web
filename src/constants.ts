@@ -14,12 +14,12 @@ export const MIXIN_HOST = "https://api.mixin.one";
 
 export const CONFIG = isProduct
   ? {
-      API_BASE: "https://dash-api.getlinks.jp/api",
-      MIXIN_CLIENT_ID: "39d0a82d-2445-4abf-b273-7920af251174",
+      API_BASE: "",
+      MIXIN_CLIENT_ID: "",
     }
   : {
-      API_BASE: "https://dash-api.chrove.com/api",
-      MIXIN_CLIENT_ID: "2ba745d7-3e3e-4b46-8c4c-56ca3282081d",
+      API_BASE: "https://wave-test-api.fox.one/api",
+      MIXIN_CLIENT_ID: "2e7d1db4-7795-4203-a0e6-79ad6ce39135",
     };
 
 export const EVENTS = {

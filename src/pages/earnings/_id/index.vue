@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="meta.show">
+  <v-container v-if="meta.show" class="earning-details-page">
     <earning-brief-card :product="meta.product" :asset="meta.asset" />
 
     <earning-details :product="meta.product" :asset="meta.asset" />
@@ -46,3 +46,9 @@ class EarningDetailPage extends Mixins(mixins.Page) {
 }
 export default EarningDetailPage;
 </script>
+
+<style lang="scss" scoped>
+.earning-details-page {
+  padding-bottom: 100px;
+}
+</style>

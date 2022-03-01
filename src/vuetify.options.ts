@@ -14,9 +14,11 @@ export default function({ store }) {
       themes: {
         light: {
           primary: "#000000",
+          secondary: "#6371E8",
         },
         dark: {
           primary: "#FFFFFF",
+          secondary: "#6371E8",
         },
       },
     },

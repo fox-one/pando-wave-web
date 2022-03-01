@@ -1,8 +1,11 @@
-import { FIconList, FIconStatistic } from "@foxone/icons";
+import { FIconList, FIconStatistic, FIconDocumentFill, FIconCommentFill, FIconChevronRight4PBold } from "@foxone/icons";
 
 const ficons = {
   FIconList: { component: FIconList },
   FIconStatistic: { component: FIconStatistic },
+  FIconDocumentFill: { component: FIconDocumentFill },
+  FIconCommentFill: { component: FIconCommentFill },
+  FIconChevronRight4PBold: { component: FIconChevronRight4PBold },
 };
 
 const icons = ["IconBullet"].reduce((m, k) => ({ ...m, [k]: { component: k } }), {});

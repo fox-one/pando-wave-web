@@ -12,7 +12,7 @@
         <account-entry />
       </div>
 
-      <pando-products current-id="rings" z-index="111" />
+      <pando-products current-id="wave" z-index="111" />
     </v-layout>
 
     <template v-slot:extension v-if="appbar.extension">

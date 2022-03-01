@@ -8,6 +8,8 @@
     />
 
     <auth-modal />
+
+    <pay-qr-code-modal />
   </div>
 </template>
 
@@ -15,10 +17,12 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { Sync } from "vuex-pathify";
 import AuthModal from "./AuthModal.vue";
+import PayQrCodeModal from "./PayQrCodeModal.vue";
 
 @Component({
   components: {
     AuthModal,
+    PayQrCodeModal,
   },
 })
 class Modals extends Vue {

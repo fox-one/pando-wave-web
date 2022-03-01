@@ -21,11 +21,13 @@ export async function init(vm: Vue) {
 }
 
 export async function loadAccount(vm: Vue) {
-  await Promise.all([
-    // vm.$utils.wallet.getAssets(vm),
-    vm.$store.dispatch(GlobalActions.LOAD_PROFILE),
-    vm.$store.dispatch(GlobalActions.LOAD_MINE_PRODUCTS),
-  ]);
+  try {
+    await Promise.all([
+      vm.$utils.wallet.getAssets(vm),
+      vm.$store.dispatch(GlobalActions.LOAD_PROFILE),
+      vm.$store.dispatch(GlobalActions.LOAD_MINE_PRODUCTS),
+    ]);
+  } catch (error) {}
 }
 
 export async function loadMarket(vm: Vue) {

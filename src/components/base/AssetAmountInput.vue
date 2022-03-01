@@ -2,6 +2,7 @@
   <f-asset-amount-input
     v-model="bindAmount"
     :asset.sync="bindAsset"
+    :assets="assets"
     inputmode="decimal"
     hide-details
     fullfilled
@@ -29,8 +30,6 @@ import { GlobalGetters } from "~/store/types";
   inheritAttrs: false,
 })
 class AssetAmountInput extends Vue {
-  @Prop({ type: Boolean, default: false }) useCToken;
-
   @Prop() assets;
 
   @PropSync("asset") bindAsset;
@@ -48,6 +47,7 @@ class AssetAmountInput extends Vue {
 
     return {
       closed,
+      getters,
       logged: getters[GlobalGetters.LOGGED],
       balance: getBalanceById(this.bindAsset.id),
       fiatAmountText: toFiat(this, { n: fiatAmount }),

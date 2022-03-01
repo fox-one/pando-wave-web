@@ -5,12 +5,11 @@ import Http from "@foxone/utils/http";
 import { AxiosResponse } from "axios";
 import createApis from "./apis";
 
-function generateStructureInterceptor() {
+function generateStructureInterceptor(app) {
   return [
     (res: AxiosResponse) => {
       if (res?.data?.error?.code === 401) {
-        // TODO: logout
-        // app.$utils.account.logout({ $store: app.store } as Vue);
+        app.$utils.account.logout({ $store: app.store } as Vue);
 
         return Promise.reject(res.data.error);
       }
@@ -23,8 +22,7 @@ function generateStructureInterceptor() {
         const status = error.response.status;
 
         if (status === 401) {
-          // TODO: logout
-          // app.$utils.account.logout({ $store: app.store } as Vue);
+          app.$utils.account.logout({ $store: app.store } as Vue);
         }
 
         return Promise.reject({ status, ...error.response.data });
@@ -51,7 +49,7 @@ function generateAuthInterceptor(app: NuxtAppOptions) {
 
 export default function createHttpService(app: NuxtAppOptions, base: string) {
   const config: AxiosRequestConfig = { baseURL: base };
-  const http = new Http(config, [generateAuthInterceptor(app)], [generateStructureInterceptor()]);
+  const http = new Http(config, [generateAuthInterceptor(app)], [generateStructureInterceptor(app)]);
 
   return createApis(http);
 }

@@ -8,3 +8,19 @@ a {
 .f-number {
   font-feature-settings: "salt" on;
 }
+
+.f-dialog__custom {
+  .v-card__title {
+    font-weight: 600;
+    font-size: 18px !important;
+    line-height: 22px;
+  }
+
+  .v-card__text {
+    padding: 0 32px 24px;
+  }
+
+  .f-dialog__actions {
+    padding-bottom: 32px;
+  }
+}

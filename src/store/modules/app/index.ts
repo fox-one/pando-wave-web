@@ -23,6 +23,13 @@ const state = (): State.App => ({
 
 const mutations = {
   ...make.mutations(state),
+  [MutationTypes.SET_PAYING](state, data) {
+    state.paying = { ...state.paying, ...data };
+
+    if (data.visible === false && state.paying.timer) {
+      clearTimeout(state.paying.timer as any);
+    }
+  },
   [MutationTypes.SET_APPBAR](state, value) {
     const defaultValue = {
       title: "",

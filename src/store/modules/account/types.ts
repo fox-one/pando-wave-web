@@ -1,6 +1,8 @@
 export const prefix = "account/";
 
-export const GetterTypes = {};
+export const GetterTypes = {
+  GET_MINE_PRODUCT_BY_ID: "GET_MINE_PRODUCT_BY_ID",
+};
 
 export const MutationTypes = {
   SET_PROFILE: "SET_PROFILE",

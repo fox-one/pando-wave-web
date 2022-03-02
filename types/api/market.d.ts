@@ -36,6 +36,20 @@ declare namespace API {
     version: number;
   }
 
+  export interface MyProduct {
+    created_at: string;
+    deleted_at: null | string;
+    earning_product_id: number;
+    id: number;
+    normalized_amount: string;
+    status: string;
+    total_buy_amount: string;
+    total_redeem_amount: string;
+    updated_at: string;
+    user_id: string;
+    version: number;
+  }
+
   export type Fiats = {
     code: string;
     rate: number;

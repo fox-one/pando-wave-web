@@ -1,11 +1,6 @@
 <template>
   <div>
-    <f-paying-modal
-      :show="paying.visible"
-      :text="$t('common.checking-payment')"
-      z-index="1000"
-      @cancel="handlePayingCancel"
-    />
+    <f-paying-modal :show="paying.visible" :text="text" z-index="1000" @cancel="handlePayingCancel" />
 
     <auth-modal />
 
@@ -14,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { Sync } from "vuex-pathify";
 import AuthModal from "./AuthModal.vue";
 import PayQrCodeModal from "./PayQrCodeModal.vue";
@@ -28,7 +23,9 @@ import PayQrCodeModal from "./PayQrCodeModal.vue";
 class Modals extends Vue {
   @Sync("app/paying") paying!: State.PayState;
 
-  @Prop() a;
+  get text() {
+    return this.paying.text || this.$t("common.checking-payment");
+  }
 
   handlePayingCancel() {
     this.paying = { visible: false, timer: null };

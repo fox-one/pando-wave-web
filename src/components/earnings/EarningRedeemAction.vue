@@ -1,7 +1,7 @@
 <template>
   <base-bottom-action-sheet>
     <div class="earning-actions">
-      <f-button :loading="loading" :disabled="!valid" color="primary" @click="handleConfirm">
+      <f-button :disabled="!valid" :loading="loading" color="primary" @click="handleConfirm">
         Confirm
       </f-button>
     </div>
@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-class EarningBuyAction extends Vue {
+class EarningRedeemAction extends Vue {
   @Prop() amount!: string;
 
   @Prop() asset!: API.Asset;
@@ -23,21 +23,28 @@ class EarningBuyAction extends Vue {
 
   loading = false;
 
-  async handleConfirm() {
+  handleConfirm() {
+    const h = this.$createElement;
+    const amountText = `${this.amount} ${this.asset.symbol}`;
+
+    this.$uikit.dialog.show({
+      title: h("div", [h(""), h("span", "Confirm Redeem?")]),
+      text: `Your will redeem ${amountText}`,
+      cancel: { show: true },
+      confirm: {
+        callback: () => this.requestRedeem(),
+      },
+    });
+  }
+
+  async requestRedeem() {
     this.loading = true;
 
     try {
-      this.$utils.payment.buy(
+      await this.$utils.payment.redeem(
         this,
-        {
-          client_id: this.product.account_id,
-          asset_id: this.product.asset_id,
-          amount: this.amount,
-          product_id: "" + this.product.id,
-        },
-        {
-          success: () => this.handleSuccess(),
-        },
+        { product_id: this.product.id, amount: this.amount },
+        { success: () => this.handleSuccess() },
       );
     } catch (error) {
       this.$utils.helper.errorHandler(this, error);
@@ -50,7 +57,7 @@ class EarningBuyAction extends Vue {
     const h = this.$createElement;
 
     this.$uikit.dialog.show({
-      title: h("div", [h(""), h("span", "Buy Successfully")]),
+      title: h("div", [h(""), h("span", "Redeem Successfully")]),
       text: "Your request will be processed. Please return to see the balance",
       cancel: { show: false },
       confirm: { props: { text: false, color: "primary" } },
@@ -58,7 +65,7 @@ class EarningBuyAction extends Vue {
     });
   }
 }
-export default EarningBuyAction;
+export default EarningRedeemAction;
 </script>
 
 <style lang="scss" scoped>

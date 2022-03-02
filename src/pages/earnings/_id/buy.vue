@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import { Component, Mixins } from "vue-property-decorator";
-import { GlobalGetters } from "@/store/types";
 import mixins from "@/mixins";
 import EarningBuyForm from "@/components/earnings/EarningBuyForm.vue";
 import BuyFormInformations from "@/components/earnings/BuyFormInformations.vue";
@@ -19,27 +18,11 @@ import BuyFormInformations from "@/components/earnings/BuyFormInformations.vue";
     BuyFormInformations,
   },
 })
-class EarningBuyPage extends Mixins(mixins.Page) {
+class EarningBuyPage extends Mixins(mixins.Page, mixins.Earning) {
   amount = "";
 
   get title() {
     return "Buy";
-  }
-
-  get id() {
-    return this.$route.params.id;
-  }
-
-  get meta() {
-    const getProductMeta: Getter.GetProductMeta = this.$store.getters[GlobalGetters.GET_PRODUCT_META];
-    const productMeta = getProductMeta(this.id);
-    const show = Boolean(productMeta.product && productMeta.asset);
-
-    return {
-      product: productMeta.product,
-      asset: productMeta.asset,
-      show,
-    };
   }
 }
 export default EarningBuyPage;

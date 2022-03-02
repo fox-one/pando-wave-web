@@ -1,6 +1,6 @@
 declare namespace State {
   export interface Account {
     profile: API.Profile | null;
-    products: API.Product[];
+    products: API.MyProduct[];
   }
 }

@@ -8,10 +8,10 @@ import createApis from "./apis";
 function generateStructureInterceptor(app) {
   return [
     (res: AxiosResponse) => {
-      if (res?.data?.error?.code === 401) {
+      if (res?.data?.data?.code === 401) {
         app.$utils.account.logout({ $store: app.store } as Vue);
 
-        return Promise.reject(res.data.error);
+        return Promise.reject(res.data.data);
       }
 
       return Promise.resolve(res.data.data);

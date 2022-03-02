@@ -24,6 +24,11 @@ export interface BuyEarningParams {
   product_id: string;
 }
 
+export interface RedeemEarningParams {
+  amount: string;
+  product_id: number;
+}
+
 export const EarningProductAction = {
   Buy: "earning_buy",
   Redeem: "earning_redeem",
@@ -41,6 +46,7 @@ export type CheckerResult = "done" | "pending" | "error";
 
 export type Checker = () => Promise<CheckerResult>;
 
+// buy earnings
 export async function buy(vm: Vue, params: BuyEarningParams, cbs: Callbacks) {
   const followId = uuid();
   const memo = {
@@ -58,29 +64,30 @@ export async function buy(vm: Vue, params: BuyEarningParams, cbs: Callbacks) {
       traceId: followId,
       memo: Base64.encode(JSON.stringify(memo)),
     },
-    () => checker(vm, followId),
+    () => checkerOrder(vm, followId),
     cbs,
   );
 }
 
-export async function checker(vm: Vue, followId: string) {
-  try {
-    const resp = await vm.$apis.getOrder(followId);
+// redeem earnings
+export async function redeem(vm: Vue, params: RedeemEarningParams, cbs: Callbacks) {
+  const followId = uuid();
 
-    // 404
-    if (!resp.status) {
-      return "pending";
-    }
+  await vm.$apis.redeemEarningProduct(params.product_id, {
+    amount: params.amount,
+    follow_id: followId,
+  });
 
-    if (resp.status === OrderStatus.Done) {
-      return "done";
-    } else if (resp.status === OrderStatus.Processing) {
-      return "pending";
-    } else {
-      return "error";
-    }
-  } catch (error) {
-    // ignore
+  showPaying(vm, { text: "Check Result" });
+  pollingResult(vm, () => checkerOrder(vm, followId, OrderStatus.Processing), cbs);
+}
+
+export async function checkerOrder(vm: Vue, followId: string, status = OrderStatus.Done) {
+  const resp = await vm.$apis.getOrder(followId);
+
+  if (resp.status === status) {
+    return "done";
+  } else {
     return "pending";
   }
 }
@@ -113,11 +120,7 @@ export async function payment(vm: Vue, params: TransferParams, checker: Checker,
 export async function pollingResult(vm: Vue, checker: Checker, cbs: Callbacks) {
   const result = await checker();
 
-  console.log(cbs);
-
-  cbs.success?.();
-  hidePaying(vm);
-  return;
+  if (!vm.$store.state.app.paying.visible) return;
 
   if (result === "done") {
     cbs.success?.();
@@ -134,8 +137,8 @@ export async function pollingResult(vm: Vue, checker: Checker, cbs: Callbacks) {
   }
 }
 
-export function showPaying(vm: Vue) {
-  vm.$store.commit(GlobalMutations.SET_PAYING, { visible: true });
+export function showPaying(vm: Vue, params = { text: "" }) {
+  vm.$store.commit(GlobalMutations.SET_PAYING, { visible: true, ...params });
 }
 
 export function hidePaying(vm: Vue) {

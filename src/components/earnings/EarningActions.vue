@@ -1,6 +1,9 @@
 <template>
   <base-bottom-action-sheet>
     <div class="earning-actions">
+      <f-button v-if="hold" color="greyscale_6" @click="handleRedeem" class="mr-4">
+        Redeem
+      </f-button>
       <f-button color="primary" @click="handleBuy">
         Buy
       </f-button>
@@ -15,8 +18,14 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 class EarningActions extends Vue {
   @Prop() product!: API.Product;
 
+  @Prop() hold!: API.MyProduct;
+
   handleBuy() {
     this.$router.push({ name: "earnings-id-buy", params: { id: this.product.id + "" } });
+  }
+
+  handleRedeem() {
+    this.$router.push({ name: "earnings-id-redeem", params: { id: this.product.id + "" } });
   }
 }
 export default EarningActions;

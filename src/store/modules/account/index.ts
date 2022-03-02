@@ -1,13 +1,17 @@
 import { MutationTree, GetterTree, ActionTree } from "vuex";
 import { make } from "vuex-pathify";
-import { MutationTypes, ActionTypes } from "./types";
+import { MutationTypes, ActionTypes, GetterTypes } from "./types";
 
 const state = (): State.Account => ({
   profile: null,
   products: [],
 });
 
-const getters: GetterTree<State.Account, any> = {};
+const getters: GetterTree<State.Account, any> = {
+  [GetterTypes.GET_MINE_PRODUCT_BY_ID](state) {
+    return (id: string) => state.products.find((x) => String(x.earning_product_id) === id);
+  },
+};
 
 const mutations: MutationTree<State.Account> = {
   ...make.mutations(state),

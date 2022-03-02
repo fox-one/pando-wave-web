@@ -1,10 +1,12 @@
 <template>
   <v-container v-if="meta.show" class="earning-details-page">
-    <earning-brief-card :product="meta.product" :asset="meta.asset" />
+    <earning-hold-card v-if="meta.hold" :product="meta.product" :asset="meta.asset" :hold="meta.hold" />
+
+    <earning-brief-card v-else :product="meta.product" :asset="meta.asset" />
 
     <earning-details :product="meta.product" :asset="meta.asset" />
 
-    <earning-actions :product="meta.product" />
+    <earning-actions :hold="meta.hold" :product="meta.product" />
   </v-container>
 </template>
 
@@ -15,10 +17,12 @@ import { GlobalGetters } from "@/store/types";
 import EarningBriefCard from "@/components/earnings/EarningBriefCard.vue";
 import EarningDetails from "@/components/earnings/EarningDetails.vue";
 import EarningActions from "@/components/earnings/EarningActions.vue";
+import EarningHoldCard from "@/components/earnings/EarningHoldCard.vue";
 
 @Component({
   components: {
     EarningBriefCard,
+    EarningHoldCard,
     EarningDetails,
     EarningActions,
   },
@@ -40,6 +44,7 @@ class EarningDetailPage extends Mixins(mixins.Page) {
     return {
       product: productMeta.product,
       asset: productMeta.asset,
+      hold: productMeta.hold,
       show,
     };
   }

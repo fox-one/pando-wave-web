@@ -14,6 +14,7 @@ declare namespace State {
 
   export interface PayState {
     visible: boolean;
+    text?: string;
     timer?: any;
   }
 

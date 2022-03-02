@@ -2,10 +2,10 @@
   <base-bottom-action-sheet>
     <div class="earning-actions">
       <f-button v-if="hold" color="greyscale_6" @click="handleRedeem" class="mr-4">
-        Redeem
+        {{ $t("redeem") }}
       </f-button>
       <f-button color="primary" @click="handleBuy">
-        Buy
+        {{ $t("buy") }}
       </f-button>
     </div>
   </base-bottom-action-sheet>

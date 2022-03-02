@@ -1056,10 +1056,10 @@
   resolved "https://registry.npmjs.org/@foxone/icons/-/icons-3.0.1-55.tgz#0bce7ab906cfa5634b7352ff9bf2ec0bc0e5932a"
   integrity sha512-K60K9veoExnJjEwYOAk1OPrfV1a4cdlLO1pEQkrrgFM8kn9O+vsUlP9ROiijS2fupSuHL1kqO54Ai5JxvIJO1A==
 
-"@foxone/pando-ui@^0.0.2-12":
-  version "0.0.2-12"
-  resolved "https://registry.npmjs.org/@foxone/pando-ui/-/pando-ui-0.0.2-12.tgz#caeb3a99d3d8862e74761b87988df9b1d7dd29c6"
-  integrity sha512-aBfeVsTP4hd3l4IpC8kzckGuiJ9CsGcv7tamT38GXWmLZkyk2WCVPDPykfcC+asA8W0oLUQKb6rqnBgT2MOr6A==
+"@foxone/pando-ui@^0.0.2-13":
+  version "0.0.2-13"
+  resolved "https://registry.npmjs.org/@foxone/pando-ui/-/pando-ui-0.0.2-13.tgz#4bc59894cba59a0f36b7efc57db37e7ccbb1a6ad"
+  integrity sha512-MTAmI4nQixg9CCYxCmg1yXh8jusHD0I3vNZAxOuPAYr6sN9rNh7YzJ06oA1xVTaPujKPNk2OUZLLOUlj1GfEhw==
 
 "@foxone/uikit@^3.0.1-58":
   version "3.0.1-58"

@@ -2,7 +2,7 @@
   <base-bottom-action-sheet>
     <div class="earning-actions">
       <f-button :loading="loading" :disabled="!valid" color="primary" @click="handleConfirm">
-        Confirm
+        {{ $t("confirm") }}
       </f-button>
     </div>
   </base-bottom-action-sheet>
@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import { VIcon } from "vuetify/lib";
 
 @Component
 class EarningBuyAction extends Vue {
@@ -27,7 +28,7 @@ class EarningBuyAction extends Vue {
     this.loading = true;
 
     try {
-      this.$utils.payment.buy(
+      await this.$utils.payment.buy(
         this,
         {
           client_id: this.product.account_id,
@@ -49,9 +50,15 @@ class EarningBuyAction extends Vue {
   handleSuccess() {
     const h = this.$createElement;
 
+    this.$emit("success");
+
+    this.$utils.app.refresh(this);
     this.$uikit.dialog.show({
-      title: h("div", [h(""), h("span", "Buy Successfully")]),
-      text: "Your request will be processed. Please return to see the balance",
+      title: h("div", { staticClass: "d-flex align-center" }, [
+        h(VIcon, { staticClass: "mr-2" }, ["$IconCheck"]),
+        h("span", this.$t("messeage.buy_successfully") as string),
+      ]),
+      text: this.$t("messeage.processed") as string,
       cancel: { show: false },
       confirm: { props: { text: false, color: "primary" } },
       props: { contentClass: "f-dialog__custom" },

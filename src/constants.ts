@@ -4,7 +4,7 @@ export const VERSION = pkg.version;
 
 export const isProduct = process.env.APP_ENV === "prod";
 
-export const PANDO_DOC = "https://docs.pando.im/docs/rings/intro";
+export const PANDO_DOC = "https://docs.pando.im/docs/";
 
 export const NODE_ENV = process.env.NODE_ENV;
 

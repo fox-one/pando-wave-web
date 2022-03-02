@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid" class="earning-redeem-form">
+  <v-form ref="form" v-model="valid" class="earning-redeem-form">
     <f-asset-amount-input
       v-model="bindAmount"
       :asset.sync="current"
@@ -9,7 +9,7 @@
       inputmode="decimal"
       hide-details
       fullfilled
-      placeholder="Redeem Amount"
+      :placeholder="$t('redeem_amount')"
     >
       <template #tools="{ messages }">
         <f-asset-input-tools :messages="messages" :fiat-amount="meta.fiatAmountText">
@@ -28,7 +28,13 @@
       </template>
     </f-asset-amount-input>
 
-    <earning-redeem-action :valid="valid" :amount="bindAmount" :asset="asset" :product="product" />
+    <earning-redeem-action
+      :valid="valid"
+      :amount="bindAmount"
+      :asset="asset"
+      :product="product"
+      @success="handleSuccess"
+    />
   </v-form>
 </template>
 
@@ -86,14 +92,20 @@ class EarningRedeemForm extends Vue {
   get rules() {
     return {
       amount: [
-        (v) => (!!v && +v > 0) || "Amount is invalid",
-        (v) => +v <= +this.meta.position || "Amount cannot exceed position",
+        (v) => (!!v && +v > 0) || this.$t("error.amount-invalid"),
+        (v) => +v <= +this.meta.position || this.$t("error.amount_exceed_position"),
       ],
     };
   }
 
   handleFill() {
     this.bindAmount = this.meta.position + "";
+  }
+
+  handleSuccess() {
+    const form: any = this.$refs.form;
+
+    form.reset();
   }
 }
 export default EarningRedeemForm;

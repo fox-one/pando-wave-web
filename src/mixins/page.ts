@@ -25,7 +25,7 @@ export interface Page extends Vue {
   },
 })
 export default class PageView extends Vue {
-  get title() {
+  get title(): any {
     return "";
   }
 

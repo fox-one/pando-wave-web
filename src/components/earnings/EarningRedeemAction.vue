@@ -2,7 +2,7 @@
   <base-bottom-action-sheet>
     <div class="earning-actions">
       <f-button :disabled="!valid" :loading="loading" color="primary" @click="handleConfirm">
-        Confirm
+        {{ $t("confirm") }}
       </f-button>
     </div>
   </base-bottom-action-sheet>
@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { VIcon } from "vuetify/lib";
 
 @Component
 class EarningRedeemAction extends Vue {
@@ -28,8 +29,8 @@ class EarningRedeemAction extends Vue {
     const amountText = `${this.amount} ${this.asset.symbol}`;
 
     this.$uikit.dialog.show({
-      title: h("div", [h(""), h("span", "Confirm Redeem?")]),
-      text: `Your will redeem ${amountText}`,
+      title: h("div", [h("span", this.$t("message.confirm_redeem") as string)]),
+      text: this.$t("message.redeem_amount", { amount: amountText }) as string,
       cancel: { show: true },
       confirm: {
         callback: () => this.requestRedeem(),
@@ -56,9 +57,15 @@ class EarningRedeemAction extends Vue {
   handleSuccess() {
     const h = this.$createElement;
 
+    this.$emit("success");
+
+    this.$utils.app.refresh(this);
     this.$uikit.dialog.show({
-      title: h("div", [h(""), h("span", "Redeem Successfully")]),
-      text: "Your request will be processed. Please return to see the balance",
+      title: h("div", { staticClass: "d-flex align-center" }, [
+        h(VIcon, { staticClass: "mr-2" }, ["$IconCheck"]),
+        h("span", this.$t("message.redeem_success") as string),
+      ]),
+      text: this.$t("messeage.processed") as string,
       cancel: { show: false },
       confirm: { props: { text: false, color: "primary" } },
       props: { contentClass: "f-dialog__custom" },

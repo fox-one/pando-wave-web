@@ -8,7 +8,7 @@ const config: NuxtConfig = {
   },
   srcDir: "./src",
   head: {
-    title: "nuxt-ts-template-source",
+    title: "Pando Wave",
     meta: [
       { charset: "utf-8" },
       {

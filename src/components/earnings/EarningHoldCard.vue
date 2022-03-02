@@ -1,7 +1,9 @@
 <template>
   <div class="earning-hold-card">
     <div class="field balance">
-      <div class="field-label">Bal.</div>
+      <div class="field-label">
+        {{ $t("bal") }}
+      </div>
       <div class="field-value f-number">
         <span>{{ meta.position }}</span>
         <span class="symbol">{{ meta.symbol }}</span>
@@ -10,7 +12,9 @@
 
     <div>
       <div class="field mb-4">
-        <div class="field-label">Total Yield</div>
+        <div class="field-label">
+          {{ $t("total_yield") }}
+        </div>
         <div class="field-value">
           <span>{{ meta.revenue }}</span>
           <span class="symbol">{{ meta.symbol }}</span>
@@ -18,7 +22,9 @@
       </div>
 
       <div class="field">
-        <div class="field-label">AROR</div>
+        <div class="field-label">
+          {{ $t("aror") }}
+        </div>
         <div class="field-value">
           <span>{{ meta.aror }}</span>
         </div>

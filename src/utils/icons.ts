@@ -8,7 +8,7 @@ const ficons = {
   FIconChevronRight4PBold: { component: FIconChevronRight4PBold },
 };
 
-const icons = ["IconBullet"].reduce((m, k) => ({ ...m, [k]: { component: k } }), {});
+const icons = ["IconBullet", "IconCheck"].reduce((m, k) => ({ ...m, [k]: { component: k } }), {});
 
 export default {
   ...ficons,

@@ -29,10 +29,10 @@ export async function authMixin(vm: Vue, code: string) {
 }
 
 export async function authFennec(vm: Vue) {
-  await vm.$fennec.connect("Pando Rings");
+  await vm.$fennec.connect("Pando Wave");
 
   const token = await vm.$fennec.ctx!.wallet.signToken({
-    payload: { from: "pando-rings" },
+    payload: { from: "pando-wave" },
   });
 
   await updateProfile(vm, { token, channel: "fennec" });

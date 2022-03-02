@@ -5,7 +5,9 @@
         <v-icon>$FIconList</v-icon>
       </div>
       <div class="section-content">
-        <div class="section-title">Description</div>
+        <div class="section-title">
+          {{ $t("description") }}
+        </div>
 
         <div class="section-value">
           {{ meta.description }}
@@ -18,7 +20,9 @@
         <v-icon>$FIconStatistic</v-icon>
       </div>
       <div class="section-content">
-        <div class="section-title">Capacity</div>
+        <div class="section-title">
+          {{ $t("capacity") }}
+        </div>
         <div class="section-value">
           <div>{{ meta.capacityText }}</div>
           <v-progress-linear :value="meta.capacityRate" color="secondary" rounded class="mt-3" />
@@ -31,10 +35,12 @@
         <v-icon>$IconBullet</v-icon>
       </div>
       <div class="section-content">
-        <div class="section-title">Details</div>
+        <div class="section-title">
+          {{ $t("details") }}
+        </div>
 
         <div class="section-value">
-          <div>The interest yield is compounded and accrued every minute.</div>
+          <div>{{ $t("message.interest_yield") }}</div>
 
           <base-information-item-list :informations="meta.informations" class="mt-3" />
         </div>
@@ -65,20 +71,20 @@ class EarningDetails extends Vue {
       capacityRate: ((+sold / +capacity) * 100).toFixed(2),
       informations: [
         {
-          label: "Interest Period ",
-          value: period + " " + "sec",
+          label: this.$t("interest_period"),
+          value: period + " " + this.$t("seconds"),
         },
         {
-          label: "Min Amount",
+          label: this.$t("min_amount_per_order"),
           value: format({ n: min_amount_per_order }) + " " + symbol,
         },
         {
-          label: "Max Amount",
+          label: this.$t("max_amount_per_order"),
           value: format({ n: max_amount_per_order }) + " " + symbol,
         },
         {
-          label: "Redemption Time",
-          value: 5 + " " + "minutes",
+          label: this.$t("redemption_time"),
+          value: 5 + " " + this.$t("minutes"),
         },
       ],
     };

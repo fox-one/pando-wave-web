@@ -1,15 +1,21 @@
 <template>
-  <v-form v-model="valid" class="earning-buy-form">
+  <v-form ref="form" v-model="valid" class="earning-buy-form">
     <base-asset-amount-input
       :selectable="false"
       :asset="current"
       :amount.sync="bindAmount"
       :assets="assets"
       :rules="rules.amount"
-      placeholder="Buy Amount"
+      :placeholder="$t('buy.amount')"
     />
 
-    <earning-buy-action :valid="valid" :asset="asset" :amount="bindAmount" :product="product" />
+    <earning-buy-action
+      :valid="valid"
+      :asset="asset"
+      :amount="bindAmount"
+      :product="product"
+      @success="handleSuccess"
+    />
   </v-form>
 </template>
 
@@ -52,12 +58,18 @@ class EarningBuyForm extends Vue {
 
     return {
       amount: [
-        (v) => !!v || +v > 0 || "Amount is invalid",
-        (v) => v <= +max_amount_per_order || `Max amount preorder is ${maxAmountPerOrderText}`,
-        (v) => v >= +min_amount_per_order || `Min amount preorder is ${minAmountPerOrderText}`,
-        (v) => v <= avaliable || `Only ${avaliableText} is avaliable`,
+        (v) => !!v || +v > 0 || this.$t("error.amount-invalid"),
+        (v) => v <= +max_amount_per_order || this.$t("error.max_amount_per_order", { amount: maxAmountPerOrderText }),
+        (v) => v >= +min_amount_per_order || this.$t("error.min_amount_per_order", { amount: minAmountPerOrderText }),
+        (v) => v <= avaliable || this.$t("error.avaliable", { amount: avaliableText }),
       ],
     };
+  }
+
+  handleSuccess() {
+    const form: any = this.$refs.form;
+
+    form.reset();
   }
 }
 export default EarningBuyForm;

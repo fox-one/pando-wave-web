@@ -33,7 +33,7 @@ class EarningBriefCard extends Vue {
     return {
       logo,
       arorText: this.$utils.number.toPercent({ n: aror }),
-      arorLabel: `${symbol} AROR`,
+      arorLabel: `${symbol} ${this.$t("aror")}`,
     };
   }
 }

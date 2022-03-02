@@ -22,7 +22,7 @@ class EarningBuyPage extends Mixins(mixins.Page, mixins.Earning) {
   amount = "";
 
   get title() {
-    return "Buy";
+    return this.$t("buy");
   }
 }
 export default EarningBuyPage;

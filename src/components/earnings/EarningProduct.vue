@@ -17,11 +17,15 @@
     <div class="body mt-6">
       <div class="field">
         <div class="field-value">{{ meta.balText }}</div>
-        <div class="field-label mt-2">Bal</div>
+        <div class="field-label mt-2">
+          {{ $t("bal") }}
+        </div>
       </div>
-      <div class="field">
+      <div class="field text-right">
         <div class="field-value secondary--text">{{ meta.arorText }}</div>
-        <div class="field-label mt-2">AROR</div>
+        <div class="field-label mt-2">
+          {{ $t("aror") }}
+        </div>
       </div>
     </div>
   </div>
@@ -48,8 +52,8 @@ class EarningProduct extends Vue {
 
     return {
       show,
+      name,
       logo: icon_url,
-      name: name,
       arorText: this.$utils.number.toPercent({ n: aror }),
       balText: bal + " " + symbol,
       btnColor: this.$vuetify.theme.dark ? "greyscale_4" : "greyscale_7",

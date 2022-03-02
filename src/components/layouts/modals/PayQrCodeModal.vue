@@ -1,12 +1,14 @@
 <template>
   <v-dialog v-model="dialog" max-width="600">
     <f-panel class="payment">
-      <div class="my-3">Payment</div>
+      <div class="my-3">
+        {{ $t("payment") }}
+      </div>
 
       <f-qr-code v-if="url" :text="url" :size="180" class="my-5" />
 
       <f-button color="primary" @click="handlePaid">
-        Paid
+        {{ $t("paid") }}
       </f-button>
     </f-panel>
   </v-dialog>
@@ -26,7 +28,7 @@ class PayQrCodeModal extends Vue {
 
   cbs: Callbacks = {};
 
-  checker = null;
+  checker: any = null;
 
   mounted() {
     this.$root.$on(EVENTS.PAY_QR_CODE, this.show);

@@ -30,23 +30,23 @@ class BuyFormInformations extends Vue {
 
     return [
       {
-        label: "AROR",
+        label: this.$t("aror"),
         value: toPercent({ n: aror }),
       },
       {
-        label: "Daily Yield",
+        label: this.$t("daily_yield"),
         value: format({ n: dailyYield }) + " " + symbol,
       },
       {
-        label: "Available",
+        label: this.$t("available"),
         value: format({ n: available }) + " " + symbol,
       },
       {
-        label: "Max Amount Per Order",
+        label: this.$t("max_amount_per_order"),
         value: format({ n: max_amount_per_order }) + " " + symbol,
       },
       {
-        label: "Min Amount Per Order",
+        label: this.$t("min_amount_per_order"),
         value: format({ n: min_amount_per_order }) + " " + symbol,
       },
     ];

@@ -21,6 +21,10 @@ class IndexPage extends Mixins(mixins.Page) {
       style: "home" as const,
     };
   }
+
+  get title() {
+    return "Pando Wave";
+  }
 }
 export default IndexPage;
 </script>

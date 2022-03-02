@@ -37,3 +37,7 @@ export async function loadMarket(vm: Vue) {
     vm.$store.dispatch(GlobalActions.LOAD_PRODUCTS),
   ]);
 }
+
+export async function refresh(vm: Vue) {
+  return Promise.all([loadAccount(vm), loadMarket(vm)]);
+}

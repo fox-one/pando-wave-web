@@ -1,5 +1,5 @@
 <template>
-  <div class="earning-brief-card">
+  <f-panel dark class="earning-brief-card">
     <div class="logo">
       <v-avatar :size="48">
         <v-img :src="meta.logo" />
@@ -13,7 +13,7 @@
     <div class="aror-label f-number mt-2">
       <span>{{ meta.arorLabel }}</span>
     </div>
-  </div>
+  </f-panel>
 </template>
 
 <script lang="ts">
@@ -45,7 +45,7 @@ export default EarningBriefCard;
   height: 272px;
   background: url("/images/bg_earning_brief.png") 0 88px/100% 184px no-repeat, #6371e8;
   border-radius: 8px;
-  padding: 40px;
+  padding: 40px !important;
 
   .aror-value {
     font-weight: bold;

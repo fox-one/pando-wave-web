@@ -1,5 +1,5 @@
 <template>
-  <div class="earning-hold-card">
+  <f-panel dark class="earning-hold-card">
     <div class="field balance">
       <div class="field-label">
         {{ $t("bal") }}
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </f-panel>
 </template>
 
 <script lang="ts">
@@ -75,7 +75,7 @@ export default EarningHoldCard;
 .earning-hold-card {
   height: 272px;
   border-radius: 8px;
-  padding: 24px;
+  padding: 24px !important;
   background: url("/images/bg_earning_hold.png") 0 88px/100% 184px no-repeat, #6371e8;
   display: flex;
   flex-direction: column;

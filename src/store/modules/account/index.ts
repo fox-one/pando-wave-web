@@ -18,6 +18,10 @@ const mutations: MutationTree<State.Account> = {
   [MutationTypes.SET_MINE_PRODUCTS](state, data) {
     state.products = data;
   },
+  [MutationTypes.CLEAR_ACCOUNT](state) {
+    state.products = [];
+    state.profile = null;
+  },
 };
 
 const actions: ActionTree<State.Account, any> = {

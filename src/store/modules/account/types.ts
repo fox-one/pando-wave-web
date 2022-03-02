@@ -7,6 +7,7 @@ export const GetterTypes = {
 export const MutationTypes = {
   SET_PROFILE: "SET_PROFILE",
   SET_MINE_PRODUCTS: "SET_MINE_PRODUCTS",
+  CLEAR_ACCOUNT: "CLEAR_ACCOUNT",
 };
 
 export const ActionTypes = {

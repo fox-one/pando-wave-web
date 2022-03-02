@@ -1,9 +1,11 @@
 <template>
   <base-bottom-action-sheet>
     <div class="earning-actions">
-      <f-button :loading="loading" :disabled="!valid" color="primary" @click="handleConfirm">
-        {{ $t("confirm") }}
-      </f-button>
+      <base-connect class="flex-grow-1 d-flex">
+        <f-button :loading="loading" :disabled="!valid" color="primary" @click="handleConfirm">
+          {{ $t("confirm") }}
+        </f-button>
+      </base-connect>
     </div>
   </base-bottom-action-sheet>
 </template>
@@ -74,8 +76,10 @@ export default EarningBuyAction;
   justify-content: space-evenly;
   padding: 16px;
 
-  .f-btn {
-    flex: 1;
+  ::v-deep {
+    .f-btn {
+      flex: 1;
+    }
   }
 }
 </style>

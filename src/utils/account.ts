@@ -67,6 +67,7 @@ export function logout(vm: Vue) {
   }
 
   vm.$store.commit(GlobalMutations.CLEAR_AUTH);
+  vm.$store.commit(GlobalMutations.CLEAR_ACCOUNT);
 }
 
 export function requestLogout(vm: Vue, cbs: { onDisconnect?: any }) {

@@ -24,7 +24,7 @@ class Modals extends Vue {
   @Sync("app/paying") paying!: State.PayState;
 
   get text() {
-    return this.paying.text || this.$t("common.checking-payment");
+    return this.paying.text || this.$t("checking_result");
   }
 
   handlePayingCancel() {

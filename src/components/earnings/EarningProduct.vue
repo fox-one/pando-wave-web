@@ -34,12 +34,16 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { GlobalGetters } from "@/store/types";
+import BigNumber from "bignumber.js";
 
 @Component
 class EarningProduct extends Vue {
   @Prop() product!: API.Product;
 
   get meta() {
+    const format = this.$utils.number.format;
+    const toPercent = this.$utils.number.toPercent;
+
     const getProductMeta: Getter.GetProductMeta = this.$store.getters[GlobalGetters.GET_PRODUCT_META];
     const productMeta = getProductMeta(this.product.id + "");
     const product = productMeta.product!;
@@ -54,8 +58,8 @@ class EarningProduct extends Vue {
       show,
       name,
       logo: icon_url,
-      arorText: this.$utils.number.toPercent({ n: aror }),
-      balText: bal + " " + symbol,
+      arorText: toPercent({ n: aror }),
+      balText: format({ n: bal, dp: 8, mode: BigNumber.ROUND_DOWN }) + " " + symbol,
       btnColor: this.$vuetify.theme.dark ? "greyscale_4" : "greyscale_7",
     };
   }

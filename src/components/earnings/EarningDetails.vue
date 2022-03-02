@@ -114,7 +114,7 @@ export default EarningDetails;
 
   .section-title {
     height: 24px;
-    line-height: 24px;
+    line-height: 28px;
   }
 
   .section-value {

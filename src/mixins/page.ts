@@ -29,7 +29,7 @@ export default class PageView extends Vue {
     return "";
   }
 
-  get appbar() {
+  get appbar(): any {
     return {
       style: "nav",
     };

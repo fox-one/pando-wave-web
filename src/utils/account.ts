@@ -22,7 +22,7 @@ export async function authMixin(vm: Vue, code: string) {
   const redirect = localStorage.getItem("authPath") || "/";
 
   await updateProfile(vm, {
-    token: res.access_token,
+    token: res.token,
     channel: "mixin",
   });
   document.location.replace(redirect);

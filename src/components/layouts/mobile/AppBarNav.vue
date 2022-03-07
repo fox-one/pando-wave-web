@@ -52,4 +52,10 @@ export default AppBarNav;
     box-shadow: 0px 0px 24px rgba(255, 255, 255, 0.12) !important;
   }
 }
+
+::v-deep {
+  .f-app-bar__title {
+    font-weight: 600 !important;
+  }
+}
 </style>

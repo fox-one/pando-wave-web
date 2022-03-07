@@ -28,7 +28,8 @@ class EarningRedeemAction extends Vue {
 
   handleConfirm() {
     const h = this.$createElement;
-    const amountText = `${this.amount} ${this.asset.symbol}`;
+    const format = this.$utils.number.format;
+    const amountText = `${format({ n: this.amount, dp: 8 })} ${this.asset.symbol}`;
 
     this.$uikit.dialog.show({
       title: h("div", [h("span", this.$t("message.confirm_redeem") as string)]),

@@ -36,6 +36,6 @@ export default EarningDetailPage;
 
 <style lang="scss" scoped>
 .earning-details-page {
-  padding-bottom: 100px;
+  padding-bottom: 140px;
 }
 </style>

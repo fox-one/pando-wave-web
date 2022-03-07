@@ -73,12 +73,12 @@ export default InformationItem;
 
 .info-item__content {
   text-align: right;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .info-item__label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--v-greyscale_3-base);
 }

@@ -76,6 +76,7 @@ export default EarningProduct;
   background: var(--v-greyscale_6-base);
   border-radius: 8px;
   padding: 24px;
+  margin-bottom: 16px;
 
   .header {
     display: flex;

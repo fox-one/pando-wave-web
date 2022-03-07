@@ -25,7 +25,13 @@
         </div>
         <div class="section-value">
           <div>{{ meta.capacityText }}</div>
-          <v-progress-linear :value="meta.capacityRate" color="secondary" rounded class="mt-3" />
+          <v-progress-linear
+            :value="meta.capacityRate"
+            color="secondary"
+            background-color="greyscale_6"
+            rounded
+            class="mt-3"
+          />
         </div>
       </div>
     </div>
@@ -115,6 +121,8 @@ export default EarningDetails;
   .section-title {
     height: 24px;
     line-height: 28px;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .section-value {

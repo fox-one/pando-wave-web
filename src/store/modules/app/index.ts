@@ -19,7 +19,7 @@ const state = (): State.App => ({
     text: "",
     timer: null,
   },
-  initing: false,
+  initing: true,
 });
 
 const mutations = {

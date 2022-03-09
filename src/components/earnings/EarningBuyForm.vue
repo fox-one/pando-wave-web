@@ -50,8 +50,10 @@ class EarningBuyForm extends Vue {
 
   get rules() {
     const format = this.$utils.number.format;
-    const { max_amount_per_order, min_amount_per_order, capacity, sold } = this.product;
-    const avaliable = new BigNumber(capacity).minus(sold);
+    const getCurrentSold = this.$utils.wave.getCurrentSold;
+
+    const { max_amount_per_order, min_amount_per_order, capacity, sold, redeemed } = this.product;
+    const avaliable = new BigNumber(capacity).minus(getCurrentSold(sold, redeemed));
     const maxAmountPerOrderText = format({ n: max_amount_per_order, dp: 8 });
     const minAmountPerOrderText = format({ n: min_amount_per_order, dp: 8 });
     const avaliableText = format({ n: avaliable, dp: 8 });

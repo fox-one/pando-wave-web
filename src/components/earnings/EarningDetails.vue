@@ -66,15 +66,17 @@ class EarningDetails extends Vue {
 
   get meta() {
     const format = this.$utils.number.format;
+    const getCurrentSold = this.$utils.wave.getCurrentSold;
 
     const { product, asset } = this;
     const { symbol } = asset;
-    const { description, capacity, sold, period, min_amount_per_order, max_amount_per_order } = product;
+    const { description, capacity, sold, redeemed, period, min_amount_per_order, max_amount_per_order } = product;
+    const currentSold = getCurrentSold(sold, redeemed);
 
     return {
       description,
-      capacityText: `${sold}/${capacity} ${symbol}`,
-      capacityRate: ((+sold / +capacity) * 100).toFixed(2),
+      capacityText: `${currentSold}/${capacity} ${symbol}`,
+      capacityRate: ((+currentSold / +capacity) * 100).toFixed(2),
       informations: [
         {
           label: this.$t("interest_period"),

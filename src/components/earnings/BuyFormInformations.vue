@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import BigNumber from "bignumber.js";
 
 @Component
 class BuyFormInformations extends Vue {
@@ -20,7 +19,7 @@ class BuyFormInformations extends Vue {
     const format = this.$utils.number.format;
     const getAror = this.$utils.wave.getAror;
     const toPercent = this.$utils.number.toPercent;
-    const getCurrentSold = this.$utils.wave.getCurrentSold;
+    const getAvaliable = this.$utils.wave.getAvaliable;
 
     const { product, asset, amount } = this;
     const { symbol } = asset;
@@ -28,7 +27,7 @@ class BuyFormInformations extends Vue {
 
     const aror = getAror(this.product.period, this.product.interest_rate);
     const dailyYield = (+amount * aror) / 365;
-    const available = new BigNumber(capacity).minus(getCurrentSold(sold, redeemed));
+    const available = getAvaliable(capacity, sold, redeemed);
 
     return [
       {
@@ -41,7 +40,7 @@ class BuyFormInformations extends Vue {
       },
       {
         label: this.$t("available"),
-        value: format({ n: available }) + " " + symbol,
+        value: format({ n: available, dp: 8 }) + " " + symbol,
       },
       {
         label: this.$t("max_amount_per_order"),

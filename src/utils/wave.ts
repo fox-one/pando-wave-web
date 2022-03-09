@@ -4,6 +4,10 @@ export function getCurrentSold(sold, redeemed) {
   return new BigNumber(sold).minus(redeemed).toNumber();
 }
 
+export function getAvaliable(capacity, sold, redeemed) {
+  return new BigNumber(capacity).minus(sold).plus(redeemed);
+}
+
 export function getAror(period, interestRate) {
   const n = (365 * 24 * 60 * 60) / parseInt(period);
   const r = parseFloat(interestRate);

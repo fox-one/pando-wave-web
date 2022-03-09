@@ -22,7 +22,6 @@
 <script lang="ts">
 import { Component, Vue, Prop, PropSync } from "vue-property-decorator";
 import EarningBuyAction from "./EarningBuyAction.vue";
-import BigNumber from "bignumber.js";
 
 @Component({
   components: {
@@ -50,10 +49,10 @@ class EarningBuyForm extends Vue {
 
   get rules() {
     const format = this.$utils.number.format;
-    const getCurrentSold = this.$utils.wave.getCurrentSold;
+    const getAvaliable = this.$utils.wave.getAvaliable;
 
     const { max_amount_per_order, min_amount_per_order, capacity, sold, redeemed } = this.product;
-    const avaliable = new BigNumber(capacity).minus(getCurrentSold(sold, redeemed));
+    const avaliable = getAvaliable(capacity, sold, redeemed);
     const maxAmountPerOrderText = format({ n: max_amount_per_order, dp: 8 });
     const minAmountPerOrderText = format({ n: min_amount_per_order, dp: 8 });
     const avaliableText = format({ n: avaliable, dp: 8 });

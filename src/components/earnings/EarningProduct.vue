@@ -43,23 +43,24 @@ class EarningProduct extends Vue {
   get meta() {
     const format = this.$utils.number.format;
     const toPercent = this.$utils.number.toPercent;
+    const getAvaliable = this.$utils.wave.getAvaliable;
 
     const getProductMeta: Getter.GetProductMeta = this.$store.getters[GlobalGetters.GET_PRODUCT_META];
     const productMeta = getProductMeta(this.product.id + "");
     const product = productMeta.product!;
     const asset = productMeta.asset!;
     const show = product && asset;
-    const { period, interest_rate, capacity, sold, name } = product;
+    const { period, interest_rate, capacity, sold, name, redeemed } = product;
     const { symbol, icon_url } = asset;
     const aror = this.$utils.wave.getAror(period, interest_rate);
-    const bal = +capacity - +sold;
+    const avaliable = getAvaliable(capacity, sold, redeemed);
 
     return {
       show,
       name,
       logo: icon_url,
       arorText: toPercent({ n: aror }),
-      balText: format({ n: bal, dp: 8, mode: BigNumber.ROUND_DOWN }) + " " + symbol,
+      balText: format({ n: avaliable, dp: 8, mode: BigNumber.ROUND_DOWN }) + " " + symbol,
       btnColor: this.$vuetify.theme.dark ? "greyscale_4" : "greyscale_7",
     };
   }

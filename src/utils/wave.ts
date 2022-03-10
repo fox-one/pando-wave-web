@@ -4,8 +4,8 @@ export function getCurrentSold(sold, redeemed) {
   return new BigNumber(sold).minus(redeemed).toNumber();
 }
 
-export function getAvaliable(capacity, sold, redeemed) {
-  return new BigNumber(capacity).minus(sold).plus(redeemed);
+export function getAvaliable(capacity, normalizedAmount, borrowRate) {
+  return new BigNumber(capacity).minus(new BigNumber(normalizedAmount).times(borrowRate));
 }
 
 export function getAror(period, interestRate) {

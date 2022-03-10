@@ -23,11 +23,11 @@ class BuyFormInformations extends Vue {
 
     const { product, asset, amount } = this;
     const { symbol } = asset;
-    const { capacity, sold, min_amount_per_order, max_amount_per_order, redeemed } = product;
+    const { capacity, min_amount_per_order, max_amount_per_order, borrow_rate, normalized_amount } = product;
 
     const aror = getAror(this.product.period, this.product.interest_rate);
     const dailyYield = (+amount * aror) / 365;
-    const available = getAvaliable(capacity, sold, redeemed);
+    const available = getAvaliable(capacity, normalized_amount, borrow_rate);
 
     return [
       {

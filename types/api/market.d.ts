@@ -34,6 +34,7 @@ declare namespace API {
     sold: string;
     updated_at: string;
     version: number;
+    normalized_amount: string;
   }
 
   export interface MyProduct {

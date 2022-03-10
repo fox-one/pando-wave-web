@@ -99,7 +99,7 @@ class EarningRedeemForm extends Vue {
   }
 
   handleFill() {
-    this.bindAmount = this.meta.position + "";
+    this.bindAmount = new BigNumber(this.meta.position).toString();
   }
 
   handleSuccess() {

@@ -50,10 +50,10 @@ class EarningProduct extends Vue {
     const product = productMeta.product!;
     const asset = productMeta.asset!;
     const show = product && asset;
-    const { period, interest_rate, capacity, sold, name, redeemed } = product;
+    const { period, interest_rate, capacity, name, normalized_amount, borrow_rate } = product;
     const { symbol, icon_url } = asset;
     const aror = this.$utils.wave.getAror(period, interest_rate);
-    const avaliable = getAvaliable(capacity, sold, redeemed);
+    const avaliable = getAvaliable(capacity, normalized_amount, borrow_rate);
 
     return {
       show,

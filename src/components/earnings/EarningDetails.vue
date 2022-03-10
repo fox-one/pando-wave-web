@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <!-- <div class="section">
       <div class="section-icon">
         <v-icon>$FIconStatistic</v-icon>
       </div>
@@ -34,7 +34,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="section">
       <div class="section-icon">

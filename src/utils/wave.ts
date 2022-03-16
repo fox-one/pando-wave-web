@@ -21,3 +21,15 @@ export function getPosition(normalizedAmount, borrowRate) {
 
   return position.decimalPlaces(8, BigNumber.ROUND_DOWN).toNumber();
 }
+
+export function getRedeemPeriod(vm, period) {
+  if (period < 3600) {
+    // <= 1 hour
+    return vm.$t("minutes_suffix", { n: (period / 60).toFixed(0) });
+  } else if (period < 3600 * 24) {
+    // <= 1 day
+    return vm.$t("hours_suffix", { n: (period / 60 / 60).toFixed(0) });
+  } else {
+    return vm.$t("days_suffix", { n: (period / 60 / 60 / 24).toFixed(0) });
+  }
+}

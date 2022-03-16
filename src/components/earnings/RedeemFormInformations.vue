@@ -27,21 +27,7 @@ class RedeemFormInformations extends Vue {
   }
 
   get redemptionPeriod() {
-    if (this.product.redemption_period < 3600) {
-      // <= 1 hour
-      return this.$t("minutes_suffix", {
-        n: (this.product.redemption_period / 60).toFixed(0),
-      });
-    } else if (this.product.redemption_period < 3600 * 24) {
-      // <= 1 day
-      return this.$t("hours_suffix", {
-        n: (this.product.redemption_period / 60 / 60).toFixed(0),
-      });
-    } else {
-      return this.$t("days_suffix", {
-        n: (this.product.redemption_period / 60 / 60 / 24).toFixed(0),
-      });
-    }
+    return this.$utils.wave.getRedeemPeriod(this, this.product.redemption_period);
   }
 }
 export default RedeemFormInformations;

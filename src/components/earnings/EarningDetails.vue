@@ -92,7 +92,7 @@ class EarningDetails extends Vue {
         },
         {
           label: this.$t("redemption_time"),
-          value: 5 + " " + this.$t("minutes"),
+          value: this.$utils.wave.getRedeemPeriod(this, this.product.redemption_period),
         },
       ],
     };

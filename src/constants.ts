@@ -14,8 +14,8 @@ export const MIXIN_HOST = "https://api.mixin.one";
 
 export const CONFIG = isProduct
   ? {
-      API_BASE: "",
-      MIXIN_CLIENT_ID: "",
+      API_BASE: "https://wave-api.pando.im/api",
+      MIXIN_CLIENT_ID: "df85ead6-deba-4ba1-9168-e51347b1c7fe",
     }
   : {
       API_BASE: "https://wave-test-api.fox.one/api",

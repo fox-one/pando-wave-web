@@ -33,8 +33,8 @@ class BuyFormInformations extends Vue {
       period,
     } = product;
 
-    const aror = getAror(this.product.period, this.product.interest_rate);
-    const dailyYield = ((1 + +interest_rate) ^ ((24 * 60 * 60) / period - 1)) * amount;
+    const aror = getAror(period, interest_rate);
+    const dailyYield = (Math.pow(1 + +interest_rate, (24 * 60 * 60) / period) - 1) * amount;
     const available = getAvaliable(capacity, normalized_amount, borrow_rate);
 
     return [

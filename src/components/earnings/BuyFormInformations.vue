@@ -23,10 +23,18 @@ class BuyFormInformations extends Vue {
 
     const { product, asset, amount } = this;
     const { symbol } = asset;
-    const { capacity, min_amount_per_order, max_amount_per_order, borrow_rate, normalized_amount } = product;
+    const {
+      capacity,
+      min_amount_per_order,
+      max_amount_per_order,
+      borrow_rate,
+      normalized_amount,
+      interest_rate,
+      period,
+    } = product;
 
     const aror = getAror(this.product.period, this.product.interest_rate);
-    const dailyYield = (+amount * aror) / 365;
+    const dailyYield = ((1 + +interest_rate) ^ ((24 * 60 * 60) / period - 1)) * amount;
     const available = getAvaliable(capacity, normalized_amount, borrow_rate);
 
     return [
@@ -36,7 +44,7 @@ class BuyFormInformations extends Vue {
       },
       {
         label: this.$t("daily_yield"),
-        value: format({ n: dailyYield }) + " " + symbol,
+        value: "≈ " + format({ n: dailyYield }) + " " + symbol,
       },
       {
         label: this.$t("available"),

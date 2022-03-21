@@ -16,7 +16,7 @@
           {{ $t("total_yield") }}
         </div>
         <div class="field-value">
-          <span>{{ meta.revenue }}</span>
+          <span>≈ {{ meta.revenue }}</span>
           <span class="symbol">{{ meta.symbol }}</span>
         </div>
       </div>

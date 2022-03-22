@@ -31,7 +31,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { GlobalGetters } from "@/store/types";
-import BigNumber from "bignumber.js";
 
 @Component
 class EarningProduct extends Vue {
@@ -71,6 +70,7 @@ export default EarningProduct;
   padding: 24px;
   margin-bottom: 16px;
   background-color: #6371e8;
+  color: #fff;
 
   .header {
     display: flex;

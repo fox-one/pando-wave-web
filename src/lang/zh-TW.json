@@ -43,5 +43,6 @@
   "redemption_warning": "It takes around {period} to process your redemption request. Please wait patiently.",
   "seconds": "seconds",
   "seconds_suffix": "{n} seconds",
-  "total_yield": "Total Yield"
+  "total_yield": "Total Yield",
+  "about": "About"
 }

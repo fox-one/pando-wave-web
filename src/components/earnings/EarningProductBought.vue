@@ -9,20 +9,23 @@
         {{ meta.name }}
       </div>
 
-      <f-button fab light width="32" height="32" @click="handleToDetail">
-        <v-icon size="16">$FIconAdd4PBold</v-icon>
+      <f-button fab :color="meta.btnColor" width="32" height="32" @click="handleToDetail">
+        <v-icon size="16">$FIconChevronRight4PBold</v-icon>
       </f-button>
     </div>
 
-    <div class="footer mt-6 text-center">
-      <div class="field text-center font-weight-medium">
-        <span class="field-label">
-          {{ $t("about") }}
-        </span>
-        <span class="field-label"> {{ meta.arorText }} </span>
-        <span class="field-label">
+    <div class="body mt-6">
+      <div class="field">
+        <div class="field-value">{{ meta.balText }}</div>
+        <div class="field-label mt-2">
+          {{ $t("bal") }}
+        </div>
+      </div>
+      <div class="field text-right">
+        <div class="field-value secondary--text">{{ meta.arorText }}</div>
+        <div class="field-label mt-2">
           {{ $t("aror") }}
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -38,23 +41,29 @@ class EarningProduct extends Vue {
   @Prop() product!: API.Product;
 
   get meta() {
+    const format = this.$utils.number.format;
     const toPercent = this.$utils.number.toPercent;
+    const getPosition = this.$utils.wave.getPosition;
 
     const getProductMeta: Getter.GetProductMeta = this.$store.getters[GlobalGetters.GET_PRODUCT_META];
     const productMeta = getProductMeta(this.product.id + "");
     const product = productMeta.product!;
+    const hold = productMeta.hold!;
     const asset = productMeta.asset!;
     const show = product && asset;
-    const { period, interest_rate, name } = product;
+    const { period, interest_rate, name, borrow_rate } = product;
     const { symbol, icon_url } = asset;
     const aror = this.$utils.wave.getAror(period, interest_rate);
+    const position = getPosition(hold.normalized_amount, borrow_rate);
 
     return {
       show,
       name,
-      symbol,
       logo: icon_url,
       arorText: toPercent({ n: aror }),
+      position: format({ n: position, dp: 8, mode: BigNumber.ROUND_DOWN }),
+      balText: format({ n: position, dp: 8, mode: BigNumber.ROUND_DOWN }) + " " + symbol,
+      btnColor: this.$vuetify.theme.dark ? "greyscale_4" : "greyscale_7",
     };
   }
 
@@ -67,10 +76,10 @@ export default EarningProduct;
 
 <style lang="scss" scoped>
 .earning-product {
+  background: var(--v-greyscale_6-base);
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 16px;
-  background-color: #6371e8;
 
   .header {
     display: flex;
@@ -94,33 +103,21 @@ export default EarningProduct;
         font-size: 14px;
         line-height: 17px;
       }
-    }
-  }
 
-  .footer {
-    background-color: #4e5bca;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    padding: 16px 24px;
-    .field {
-      &:before,
-      &:after {
-        content: " ";
-        background-color: #6371e8;
-        height: 2px;
-        width: 10px;
-        display: inline-block;
-        vertical-align: middle;
-        margin: 8px;
+      .field-label {
+        font-size: 12px;
+        line-height: 15px;
+        color: var(--v-greyscale_3-base);
       }
     }
   }
 }
 
-.f-btn {
+.theme--light .f-btn {
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.06);
+}
+
+.theme--dark .f-btn {
+  box-shadow: 0px 0px 16px rgba(255, 255, 255, 0.06);
 }
 </style>

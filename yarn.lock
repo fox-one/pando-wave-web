@@ -1051,10 +1051,10 @@
   dependencies:
     "@foxone/fennec-base" "0.5.4"
 
-"@foxone/icons@^3.0.1-55":
-  version "3.0.1-55"
-  resolved "https://registry.npmjs.org/@foxone/icons/-/icons-3.0.1-55.tgz#0bce7ab906cfa5634b7352ff9bf2ec0bc0e5932a"
-  integrity sha512-K60K9veoExnJjEwYOAk1OPrfV1a4cdlLO1pEQkrrgFM8kn9O+vsUlP9ROiijS2fupSuHL1kqO54Ai5JxvIJO1A==
+"@foxone/icons@^3.1.3-0":
+  version "3.1.3-0"
+  resolved "https://registry.yarnpkg.com/@foxone/icons/-/icons-3.1.3-0.tgz#c7e1ef65ae646f6ae248cf35bcdf44a865de41ac"
+  integrity sha512-O251czSGOKIOd5DLnwl7xo8r9QsIibxWEozzaBmHigk4uLAeNbHbuTcL2a7uATDr8TxGDlvHt+QkxfsBk087nA==
 
 "@foxone/pando-ui@^0.0.2-13":
   version "0.0.2-13"

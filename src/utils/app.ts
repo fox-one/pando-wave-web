@@ -1,4 +1,5 @@
 import { GlobalActions, GlobalMutations } from "~/store/types";
+import { TERMS_VERSION, EVENTS } from "@/constants";
 
 export async function init(vm: Vue) {
   try {
@@ -40,4 +41,13 @@ export async function loadMarket(vm: Vue) {
 
 export async function refresh(vm: Vue) {
   return Promise.all([loadAccount(vm), loadMarket(vm)]);
+}
+
+export function checkTerms(vm: Vue) {
+  const termsAccepted = vm.$store.state.app.termsAccepted;
+  const termsVersion = vm.$store.state.app.termsVersion;
+
+  if (!termsAccepted || termsVersion !== TERMS_VERSION) {
+    vm.$root.$emit(EVENTS.OPEN_TERMS_MODAL);
+  }
 }

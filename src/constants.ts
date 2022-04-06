@@ -2,6 +2,8 @@ import pkg from "../package.json";
 
 export const VERSION = pkg.version;
 
+export const TERMS_VERSION = "0.0.1";
+
 export const isProduct = process.env.APP_ENV === "prod";
 
 export const PANDO_DOC = "https://docs.pando.im/docs/";
@@ -25,4 +27,5 @@ export const CONFIG = isProduct
 export const EVENTS = {
   OPEN_AUTH: "OPEN_AUTH",
   PAY_QR_CODE: "PAY_QR_CODE",
+  OPEN_TERMS_MODAL: "OPEN_TERMS_MODAL",
 };

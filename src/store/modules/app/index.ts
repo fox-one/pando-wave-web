@@ -20,6 +20,8 @@ const state = (): State.App => ({
     timer: null,
   },
   initing: true,
+  termsAccepted: false,
+  termsVersion: "0.0.0",
 });
 
 const mutations = {

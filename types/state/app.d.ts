@@ -23,5 +23,7 @@ declare namespace State {
     settings: SettingsState;
     initing: boolean;
     paying: PayState;
+    termsAccepted: boolean;
+    termsVersion: string;
   }
 }

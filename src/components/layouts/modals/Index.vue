@@ -5,6 +5,8 @@
     <auth-modal />
 
     <pay-qr-code-modal />
+
+    <terms-modal />
   </div>
 </template>
 
@@ -13,10 +15,12 @@ import { Component, Vue } from "vue-property-decorator";
 import { Sync } from "vuex-pathify";
 import AuthModal from "./AuthModal.vue";
 import PayQrCodeModal from "./PayQrCodeModal.vue";
+import TermsModal from "./TermsModal.vue";
 
 @Component({
   components: {
     AuthModal,
+    TermsModal,
     PayQrCodeModal,
   },
 })

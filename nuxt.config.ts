@@ -36,7 +36,7 @@ const config: NuxtConfig = {
   },
   loading: { color: "#fff" },
   css: ["~/styles/index.scss"],
-  plugins: ["~/plugins/property.ts", "~/plugins/libs.ts", "~/plugins/persistedstate.ts"],
+  plugins: ["~/plugins/property.ts", "~/plugins/libs.ts", "~/plugins/persistedstate.ts", "~/plugins/ga.ts"],
   buildModules: [
     "@nuxtjs/eslint-module",
     [

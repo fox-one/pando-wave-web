@@ -31,6 +31,7 @@
     "nuxt-i18n": "^6.4.1",
     "vue": "^2.6.12",
     "vue-class-component": "^7.1.0",
+    "vue-gtag": "^1.14.0",
     "vue-property-decorator": "^9.1.2",
     "vue-template-compiler": "^2.6.10",
     "vuetify": "^2.1.5",

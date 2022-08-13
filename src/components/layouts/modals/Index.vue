@@ -7,6 +7,8 @@
     <pay-qr-code-modal />
 
     <terms-modal />
+
+    <pando-announce-modal app="wave" :dev="dev" />
   </div>
 </template>
 
@@ -16,6 +18,7 @@ import { Sync } from "vuex-pathify";
 import AuthModal from "./AuthModal.vue";
 import PayQrCodeModal from "./PayQrCodeModal.vue";
 import TermsModal from "./TermsModal.vue";
+import { isProduct } from "@/constants";
 
 @Component({
   components: {
@@ -26,6 +29,8 @@ import TermsModal from "./TermsModal.vue";
 })
 class Modals extends Vue {
   @Sync("app/paying") paying!: State.PayState;
+
+  dev = !isProduct;
 
   get text() {
     return this.paying.text || this.$t("checking_result");

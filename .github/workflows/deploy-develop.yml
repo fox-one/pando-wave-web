@@ -1,7 +1,7 @@
 name: Build and deploy to develop.
 
 env:
-  AWS_REGION: us-west-1
+  AWS_REGION: us-east-1
   APP_ENV: dev
 
 on:

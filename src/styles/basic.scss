@@ -24,3 +24,16 @@ a {
     padding-bottom: 32px;
   }
 }
+
+.narrow-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.f-tip {
+  font-size: 14px;
+}
+
+.f-tip__close {
+  display: none !important;
+}

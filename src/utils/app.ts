@@ -1,6 +1,10 @@
 import { GlobalActions, GlobalMutations } from "~/store/types";
 import { TERMS_VERSION, EVENTS } from "@/constants";
 
+export async function initAlternative(vm: Vue) {
+  vm.$store.commit(GlobalMutations.SET_INITING, false);
+}
+
 export async function init(vm: Vue) {
   try {
     vm.$store.commit(GlobalMutations.SET_INITING, true);

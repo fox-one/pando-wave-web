@@ -20,7 +20,7 @@ class DefaultLayout extends Vue {
 
   async mounted() {
     try {
-      await this.$utils.app.init(this);
+      await this.$utils.app.initAlternative(this);
 
       this.$utils.app.checkTerms(this);
     } catch (error) {
